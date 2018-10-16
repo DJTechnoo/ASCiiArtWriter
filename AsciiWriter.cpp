@@ -253,6 +253,14 @@ void getInput(char  input[], const char * msg)
 {
 	cout << msg << '\n';
 	cin.getline(input, INPUTLEN);
+	char c; int i = 0;
+	while (i < 8)
+	{
+		c = input[i];
+		input[i] = tolower(c);
+		i++;
+	}
+	cout << input;
 	cout << "\n\n";
 }
 
@@ -263,7 +271,10 @@ void writeAsciiArtWith(char  input[])
 	char ch;
 	for (int line = 0; line < MAXLINES; line++) {
 		for (int letter = 0; letter < strlen(input); letter++) {
-			cout << alphabet[input[letter] - ASCIIVALUETOALPHABETINDEX][line];
+			if (input[letter] - ASCIIVALUETOALPHABETINDEX < 0) cout << "\t";
+			else {
+				cout << alphabet[input[letter] - ASCIIVALUETOALPHABETINDEX][line];
+			}
 			this_thread::sleep_for(chrono::milliseconds(20));
 		}
 		this_thread::sleep_for(chrono::milliseconds(200));
