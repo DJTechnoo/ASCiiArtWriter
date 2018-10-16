@@ -8,7 +8,7 @@ using namespace std;
 
 
 const int MAXLINES = 6;			// ASCII art stacked horizontal lines per letter
-const int INPUTLEN = 10;		// Input Limit
+const int INPUTLEN = 20;		// Input Limit
 const int ASCIIVALUETOALPHABETINDEX = 97;	/* 
 											a - 97  =  0.  
 											b - 97  = 1 
@@ -16,7 +16,7 @@ const int ASCIIVALUETOALPHABETINDEX = 97;	/*
 											*/
 
 		// letter  |    line of letter  | char of line
-char alphabet[10]		[MAXLINES]			[9] = {
+char alphabet[29]		[MAXLINES]			[9] = {
 	{	// A
 		{ "    a   " },
 		{ "   a a  " },
@@ -65,6 +65,78 @@ char alphabet[10]		[MAXLINES]			[9] = {
 		{ " fff    " },
 		{ " fff    " },
 		{ " fff    " }
+	},
+	{	// G
+		{ " ggggggg" },
+		{ " gg     " },
+		{ " gg     " },
+		{ " gg   gg" },
+		{ " gg   gg" },
+		{ " ggggggg" }
+	},
+	{	// H
+		{ "hh    hh" },
+		{ "hh    hh" },
+		{ "hhhhhhhh" },
+		{ "hhhhhhhh" },
+		{ "hh    hh" },
+		{ "hh    hh" }
+	},
+	{	// I
+		{ "  iiii  " },
+		{ "  iiii  " },
+		{ "  iiii  " },
+		{ "  iiii  " },
+		{ "  iiii  " },
+		{ "  iiii  " }
+	},
+	{	// J
+		{ "    jjj " },
+		{ "    jjj " },
+		{ "    jjj " },
+		{ "    jjj " },
+		{ "jj  jjj " },
+		{ "jjjjjjj " }
+	} ,
+	{	// K
+		{ " kk   kk" },
+		{ " kk  kk " },
+		{ " kkkk   " },
+		{ " kkkk   " },
+		{ " kk  kk " },
+		{ " kk   kk" }
+	},
+	{	// L
+		{ " lll    " },
+		{ " lll    " },
+		{ " lll    " },
+		{ " lll    " },
+		{ " llllll " },
+		{ " llllll " }
+	},
+	{	// M
+		{ "m      m" },
+		{ "mm    mm" },
+		{ "m mmmm m" },
+		{ "m  mm  m" },
+		{ "m      m" },
+		{ "m      m" }
+	} ,
+	{	// N
+		{ "nn    nn" },
+		{ "nnn   nn" },
+		{ "nnnn  nn" },
+		{ "nn nn nn" },
+		{ "nn  nnnn" },
+		{ "nn   nnn" }
+	},
+	{	// O
+		{ "oooooooo" },
+		{ "oooooooo" },
+		{ "oo    oo" },
+		{ "oo    oo" },
+		{ "oooooooo" },
+		{ "oooooooo" }
 	}
 
 
@@ -95,6 +167,7 @@ void getInput(char  input[], const char * msg)
 {
 	cout << msg << '\n';
 	cin.getline(input, INPUTLEN);
+	cout << "\n\n";
 }
 
 
@@ -105,9 +178,9 @@ void writeAsciiArtWith(char  input[])
 	for (int line = 0; line < MAXLINES; line++) {
 		for (int letter = 0; letter < strlen(input); letter++) {
 			cout << alphabet[input[letter] - ASCIIVALUETOALPHABETINDEX][line];
-			this_thread::sleep_for(std::chrono::milliseconds(20));
+			this_thread::sleep_for(chrono::milliseconds(20));
 		}
-		this_thread::sleep_for(std::chrono::milliseconds(200));
+		this_thread::sleep_for(chrono::milliseconds(200));
 		cout << "\n";
 	}
 }
