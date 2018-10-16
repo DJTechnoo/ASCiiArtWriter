@@ -1,5 +1,8 @@
 #include<iostream>
 #include<cstring>
+#include <thread>
+#include <chrono>
+
 
 using namespace std;
 
@@ -98,10 +101,13 @@ void getInput(char  input[], const char * msg)
 // Algorithm to write ascii art with our ascii art letters
 void writeAsciiArtWith(char  input[])
 {
+	char ch;
 	for (int line = 0; line < MAXLINES; line++) {
 		for (int letter = 0; letter < strlen(input); letter++) {
 			cout << alphabet[input[letter] - ASCIIVALUETOALPHABETINDEX][line];
+			this_thread::sleep_for(std::chrono::milliseconds(20));
 		}
+		this_thread::sleep_for(std::chrono::milliseconds(200));
 		cout << "\n";
 	}
 }
