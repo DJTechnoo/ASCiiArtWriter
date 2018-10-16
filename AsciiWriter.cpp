@@ -8,12 +8,26 @@ using namespace std;
 
 
 const int MAXLINES = 6;			// ASCII art stacked horizontal lines per letter
+const int MAXMESSAGE = 5;
+const int STRLEN = 100;
 const int INPUTLEN = 20;		// Input Limit
 const int ASCIIVALUETOALPHABETINDEX = 97;	/* 
 											a - 97  =  0.  
 											b - 97  = 1 
 											etc...
 											*/
+
+
+
+struct Messages{
+	char messages[MAXMESSAGE][STRLEN] = {
+		{"hey wassup"},
+		{"this"},
+		{"is"},
+		{"a"},
+		{"test"}
+	};
+};
 
 		// letter  |    line of letter  | char of line
 char alphabet[26]		[MAXLINES]			[9] = {
@@ -142,9 +156,9 @@ char alphabet[26]		[MAXLINES]			[9] = {
 		{ "pppppppp" },
 		{ "pppppppp" },
 		{ "pppppppp" },
-		{ "ppp" },
-		{ "ppp" },
-		{ "ppp" }
+		{ "ppp     " },
+		{ "ppp     " },
+		{ "ppp     " }
 	},
 
 	{	// Q
@@ -232,15 +246,20 @@ char alphabet[26]		[MAXLINES]			[9] = {
 
 bool userWantsToContinue();
 void writeAsciiArtWith(char  input[]);
+void writeAsciiArtWithHappyBirthdayMessage(Messages & m);
 void getInput(char  input[], const char * msg);
 
 
 int main() {
+
+	//Messages msgs;
+
 	do {
 		char input[INPUTLEN];
 		getInput(input, "Write something for ASCII art writing!");
 
 		writeAsciiArtWith(input);
+		//writeAsciiArtWithHappyBirthdayMessage(bday);
 
 	} while (userWantsToContinue());
 
@@ -271,7 +290,7 @@ void writeAsciiArtWith(char  input[])
 	char ch;
 	for (int line = 0; line < MAXLINES; line++) {
 		for (int letter = 0; letter < strlen(input); letter++) {
-			if (input[letter] - ASCIIVALUETOALPHABETINDEX < 0) cout << "\t";
+			if (input[letter] - ASCIIVALUETOALPHABETINDEX < 0) cout << "    ";
 			else {
 				cout << alphabet[input[letter] - ASCIIVALUETOALPHABETINDEX][line];
 			}
@@ -285,11 +304,31 @@ void writeAsciiArtWith(char  input[])
 
 
 
+void writeAsciiArtWithHappyBirthdayMessage(Messages & m)
+{
+	for (int i = 0; i < MAXMESSAGE; i++) {
+		for (int line = 0; line < MAXLINES; line++) {
+			for (int letter = 0; letter < strlen(m.messages[i]); letter++) {
+				if (m.messages[i][letter] - ASCIIVALUETOALPHABETINDEX < 0) cout << "    ";
+				else {
+					cout << alphabet[m.messages[i][letter] - ASCIIVALUETOALPHABETINDEX][line];
+				}
+				cout << " ";
+				this_thread::sleep_for(chrono::milliseconds(10));
+			}
+			this_thread::sleep_for(chrono::milliseconds(200));
+			cout << "\n";
+		}
+		cout << "\n";
+	}
+}
+
+
+
 bool userWantsToContinue() {
 	cout << "\n\nQ = quit \n";
 	char ch;
 	cin >> ch; cin.ignore();
-	cout << "\n\nindex = " << ch - 97 << '\n';
 	ch = toupper(ch);
 	if (ch != 'Q') return true;
 	return false;
