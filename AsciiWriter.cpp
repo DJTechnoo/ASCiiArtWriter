@@ -16,7 +16,7 @@ const int ASCIIVALUETOALPHABETINDEX = 97;	/*
 											*/
 
 		// letter  |    line of letter  | char of line
-char alphabet[29]		[MAXLINES]			[9] = {
+char alphabet[26]		[MAXLINES]			[9] = {
 	{	// A
 		{ "    a   " },
 		{ "   a a  " },
@@ -137,10 +137,96 @@ char alphabet[29]		[MAXLINES]			[9] = {
 		{ "oo    oo" },
 		{ "oooooooo" },
 		{ "oooooooo" }
+	}, 
+	{	// P
+		{ "pppppppp" },
+		{ "pppppppp" },
+		{ "pppppppp" },
+		{ "ppp" },
+		{ "ppp" },
+		{ "ppp" }
+	},
+
+	{	// Q
+		{ "qqqqqqqq" },
+		{ "q      q" },
+		{ "q      q" },
+		{ "q   qq q" },
+		{ "q    qqq" },
+		{ "qqqqqqqq" }
+	},
+	{	// R
+		{ "rrrrrrrr" },
+		{ "rrrrrrrr" },
+		{ "rrrrrr  " },
+		{ "rr  rr  " },
+		{ "rr  rrr " },
+		{ "rr   rrr" }
+	},
+	{	// S
+		{ "ssssssss" },
+		{ "ssssssss" },
+		{ "sss     " },
+		{ "  sss   " },
+		{ "ss  sss " },
+		{ "ssssssss" }
+	},
+	{	// T
+		{ "ttttttt " },
+		{ "ttttttt " },
+		{ "  ttt   " },
+		{ "  ttt   " },
+		{ "  ttt   " },
+		{ "  ttt   " }
+	},
+	{	// U
+		{ "uu    uu" },
+		{ "uu    uu" },
+		{ "uu    uu" },
+		{ "uu    uu" },
+		{ "uuuuuuuu" },
+		{ "uuuuuuuu" }
+	},
+	{	// V
+		{ "v     v " },
+		{ "v     v " },
+		{ "v     v " },
+		{ " v   v  " },
+		{ "  v v   " },
+		{ "   v    " }
+	},
+	{	// W
+		{ "w  ww  w" },
+		{ "w  ww  w" },
+		{ "w  ww  w" },
+		{ "w wwww w" },
+		{ "ww ww ww" },
+		{ "w  ww  w" }
+	},
+	 {	// X
+		{ "x      x" },
+		{ " x    x " },
+		{ "  x  x  " },
+		{ "   x    " },
+		{ "  x x   " },
+		{ " x   x  " }
+	}, 
+	{	// Y
+		{ " yy   yy" },
+		{ "  yy yy " },
+		{ "   yy   " },
+		{ "   yy   " },
+		{ "   yy   " },
+		{ "   yy   " }
+	}, 
+	{	// Z
+		{ "zzzzzzzz" },
+		{ "zzzzzzzz" },
+		{ "   zzz  " },
+		{ "zzz     " },
+		{ "zzzzzzzz" },
+		{ "zzzzzzzz" }
 	}
-
-
-
 };
 
 
@@ -191,6 +277,7 @@ bool userWantsToContinue() {
 	cout << "\n\nQ = quit \n";
 	char ch;
 	cin >> ch; cin.ignore();
+	cout << "\n\nindex = " << ch - 97 << '\n';
 	ch = toupper(ch);
 	if (ch != 'Q') return true;
 	return false;
