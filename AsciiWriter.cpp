@@ -275,6 +275,7 @@ void writeAsciiArtWith(char  input[])
 			else {
 				cout << alphabet[input[letter] - ASCIIVALUETOALPHABETINDEX][line];
 			}
+			cout << " ";
 			this_thread::sleep_for(chrono::milliseconds(20));
 		}
 		this_thread::sleep_for(chrono::milliseconds(200));
