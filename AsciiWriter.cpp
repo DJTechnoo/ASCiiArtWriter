@@ -416,6 +416,5 @@ void changeColor() {
 	srand(time(NULL));
 	int randomColor = rand() % 7 + 9;
 	while(randomColor == 12) randomColor = rand() % 7 + 9;
-	cout << "\n\tcolor = " << randomColor << '\n';
 	SetConsoleTextAttribute(console, randomColor);
 }
